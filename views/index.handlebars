@@ -1,0 +1,14 @@
+{{#each posts}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 align-center">
+      <div class="card card-body mt-3">
+        <h4>{{title}}</h4>
+        <p>{{content}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<p>Aucun Posts</p>
+{{/each}}
