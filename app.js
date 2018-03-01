@@ -1,7 +1,9 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
+const session = require('express-session');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -9,6 +11,9 @@ const app = express();
 // Routes
 const posts = require('./routes/posts');
 const utilisateurs = require('./routes/utilisateurs');
+
+// Config passport
+require('./config/passport')(passport);
 
 // Connection Mongoose
 mongoose.Promise = global.Promise;
@@ -37,6 +42,23 @@ app.use(bodyParser.json());
 
 // Middleware Method-Override
 app.use(methodOverride('_method'));
+
+// Express session midleware
+app.use(session({
+  secret: 'younes',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Global
+app.use(function (req, res, next) {
+  res.locals.user = req.user || null;
+  next();
+});
 
 // Route Index
 app.get('/', (req, res) => {

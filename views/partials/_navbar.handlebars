@@ -2,27 +2,37 @@
   <div class="container">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+      {{#if user}}
         <li class="nav-item px-2">
-          <a href="/" class="nav-link active">Home</a>
+          <a href="/" class="nav-link active">Publication</a>
         </li>
         <li class="nav-item px-2">
-          <a href="/posts" class="nav-link active">Posts</a>
+          <a href="/posts" class="nav-link">Editer</a>
         </li>
         <li class="nav-item px-2">
-          <a href="/posts/add" class="nav-link">Ajouter</a>
+          <a href="/posts/add" class="nav-link">
+          <i class="fa fa-plus"></i> Ajouter</a>
         </li>
-      </ul>  
+        <li class="nav-item">
+          <a href="/utilisateurs/logout" class="nav-link">
+          <i class="fa fa-user-times"></i> Déconnexion
+          </a>
+        </li>
+      </ul>
+      {{else}}  
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a href="/utilisateurs/login" class="nav-link">
-            <i class="fa fa-user-times"></i> Connection
+          <i class="fa fa-user"></i> Connexion
           </a>
         </li>
         <li class="nav-item">
           <a href="/utilisateurs/inscription" class="nav-link">
-            <i class="fa fa-user-times"></i> Inscription
+          <i class="fa fa-user-plus"></i> Inscription
           </a>
         </li>
       </ul>
+      {{/if}}
     </div>
+  </div> 
 </nav>
