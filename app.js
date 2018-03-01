@@ -15,10 +15,13 @@ const utilisateurs = require('./routes/utilisateurs');
 // Config passport
 require('./config/passport')(passport);
 
+// Config Database
+const db = require('./config/database');
+
 // Connection Mongoose
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/testlogin', {
+mongoose.connect(db.mongoURI, {
   useMongoClient: true
 })
   .then(() => console.log('connecter à MongoDB...'))
@@ -156,7 +159,7 @@ app.delete('/posts/:id', (req, res) => {
 app.use('/posts', posts);
 app.use('/utilisateurs', utilisateurs);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`écoute sur le port: ${port}`);

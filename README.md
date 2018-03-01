@@ -7,4 +7,4 @@ Création d'un login avec session local passport.js
 
 3 router, login, amélioration du front
 
-4 passport.js Local Strategy, amélioration du front fonts awesome :)
+4 Ajout de Passport.js Local Strategy, amélioration du front fonts awesome :)
